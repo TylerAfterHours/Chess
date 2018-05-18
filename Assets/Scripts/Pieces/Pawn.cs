@@ -32,9 +32,9 @@ public class Pawn : MonoBehaviour {
 
 		boardScript.unhighlightSpaces();
 
-		boardScript.boardSpaces[coordinates[0], coordinates[1] + moveIncrement].highlighted = true;
+		boardScript.boardSpaces[coordinates[0], coordinates[1] + moveIncrement].GetComponent<Space>.highlighted = true;
 		if ((isWhite && coordinates [1] == 1) || (!isWhite && coordinates [1] == 6)) {
-			boardScript.boardSpaces[coordinates[0], coordinates[1] + (moveIncrement * 2)].highlighted = true;
+			boardScript.boardSpaces[coordinates[0], coordinates[1] + (moveIncrement * 2)].GetComponent<Space>.highlighted = true;
 		}
 	}
 }
