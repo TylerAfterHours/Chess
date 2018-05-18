@@ -5,15 +5,18 @@ using UnityEngine;
 public class Pawn : MonoBehaviour {
 
 	public bool isWhite;
+	public bool selected;
+	public int[] coordinates = new int[2];
+	public Transform position;
 	private int moveIncrement;
-	private Transform position;
-	private int[] coordinates = new int[2];
-	private GameObject chessBoard = GameObject.Find("Board");
-	private script boardScript = chessBoard.GetComponent("ChessBoard");
+	private GameObject chessBoard;
+	private ChessBoard boardScript;
 
 	// Use this for initialization
 	void Start () {
 		moveIncrement = isWhite ? 1 : -1;
+		chessBoard = GameObject.Find("ChessBoard");
+		boardScript = chessBoard.GetComponent<ChessBoard>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +25,8 @@ public class Pawn : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
+
+		boardScript.selectedPiece.selected = false;
 
 		boardScript.selectedPiece = this;
 
